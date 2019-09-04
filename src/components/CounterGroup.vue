@@ -6,7 +6,7 @@
         </h2>
         <div class="counters">
             <Counter
-                    v-for="(counter,index) in counters"
+                    v-for="(counter,index) in this.$store.state.counters"
                     :index="index"
                     :value="counter.value"
                     :key="index"
@@ -33,28 +33,15 @@
         computed: {
             counterSum: function () {
                 let sum = 0;
-                this.counters.forEach(element => {
+                this.$store.state.counters.forEach(element => {
                     sum = sum + element.value;
                 });
                 return sum;
             }
         },
-        created: function () {
-            // 根据 counterNumber 生成 counter 数据和组件
-            for (let i = 0; i < this.counterNumber; i++) {
-                this.counters.push({
-                    value: 0
-                });
-            }
-        },
         methods: {
             handleValueChange: function (index, value,) {
-                this.counters[index].value = value;
-            }
-        },
-        data: function () {
-            return {
-                counters: []
+                this.$store.state.counters[index].value = value;
             }
         }
     }
