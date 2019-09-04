@@ -4,7 +4,7 @@
             <li :key="index" :class="item.status">
                 <input name="status-toggle" :checked="item.status === 'completed'" type="checkbox"
                        @change="handleToggleActive(index)">
-                <label href="" @click="update(index)" class="content">{{item.content}}</label>
+                <label href="" @click="update(item.id)"  :class="content">{{item.content}}</label>
             </li>
         </template>
     </ul>
@@ -24,8 +24,8 @@
             handleToggleActive: function (index) {
                  this.$store.commit("changeStatus", index);
             },
-            update:function(index){
-                this.$store.dispatch('updateTodos',index);
+            update:function(id){
+                this.$store.dispatch('updateTodos',id);
             }
         }
     }

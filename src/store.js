@@ -18,7 +18,6 @@ export default {
     },
     getters: {
         filteredTodoList: function (state) {
-            console.log("进入了查询数据的方法")
             let filteredTodoList = [];
             for (let i = 0; i < state.todoList.length; i++) {
                 if (state.currentFilter === 'all' || state.currentFilter === state.todoList[i].status) {
